@@ -20,6 +20,8 @@ export type SettingsContextType = {
   setVisibleEditing: (bool: boolean) => void;
   switchVisible: () => void;
   switchNoteCreator: () => void;
+  filter: "all" | "done" | "not-done";
+  setFilter: (state: "all" | "done" | "not-done") => void;
 };
 
 export type ColorPick = {

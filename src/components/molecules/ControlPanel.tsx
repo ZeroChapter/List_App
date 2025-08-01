@@ -18,10 +18,18 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ id }) => {
         $margin="0px"
         onClick={() => deleteItem(id)}
       >
-        <Icon $color={colors.cross} $imageUrl={Icons.crossIcon}></Icon>
+        <Icon
+          $color={colors.cross}
+          $imageUrl={Icons.crossIcon}
+          $scale={0.67}
+        ></Icon>
       </StyledButtton>
       <StyledButtton $margin="0px">
-        <Icon $color={colors.green} $imageUrl={Icons.penIcon}></Icon>
+        <Icon
+          $color={colors.green}
+          $imageUrl={Icons.penIcon}
+          $scale={0.67}
+        ></Icon>
       </StyledButtton>
     </Flex>
   );

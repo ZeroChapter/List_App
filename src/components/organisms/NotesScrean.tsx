@@ -1,5 +1,4 @@
 import React, { useMemo, useEffect, useState } from "react";
-import { SettingsProvider } from "src/model/store/SettingsContext";
 import { SettingsPanel } from "src/components/atoms/SetttingsPanel";
 import { ItemContainer } from "src/components/molecules/ItemContainer";
 import { useItem } from "src/model/store/useItem";
@@ -12,20 +11,32 @@ export const NotesScrean: React.FC = () => {
   const { items } = useItem();
   const [itemList, setItemList] = useState<ItemData[]>(items);
   const { showNoteCreator } = useSettings();
+  const { filter } = useSettings();
 
   useEffect(() => {
     setItemList(items);
   }, [items]);
 
+  const filteredItems = useMemo(() => {
+    switch (filter) {
+      case "done":
+        return items.filter((item) => item.done);
+      case "not-done":
+        return items.filter((item) => !item.done);
+      default:
+        return items;
+    }
+  }, [items, filter]);
+
   const itemsByTag = useMemo(() => {
-    return itemList.reduce<Record<string, ItemData[]>>((acc, item) => {
+    return filteredItems.reduce<Record<string, ItemData[]>>((acc, item) => {
       if (!acc[item.tag]) {
         acc[item.tag] = [];
       }
       acc[item.tag].push(item);
       return acc;
     }, {});
-  }, [itemList]);
+  }, [filteredItems]);
 
   return (
     <>

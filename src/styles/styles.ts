@@ -41,6 +41,13 @@ export const StyledCheckBox = styled.button<{ $active: boolean }>`
   }
 `;
 
+export const BorderBox = styled.div<{ $color: string }>`
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+  border: solid 1px ${(props) => props.$color};
+`;
+
 export const CrossIcon = styled.div`
   width: 20px;
   height: 20px;
@@ -69,11 +76,15 @@ export const PenIcon = styled.div`
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
 `;
-export const Icon = styled.div<{ $color: string; $imageUrl: string }>`
+export const Icon = styled.div<{
+  $color: string;
+  $imageUrl: string;
+  $scale?: number;
+}>`
   padding: 0;
   margin: 0;
-  width: 20px;
-  height: 20px;
+  width: ${(props) => (props.$scale ? 30 * props.$scale : 30)}px;
+  height: ${(props) => (props.$scale ? 30 * props.$scale : 30)}px;
   background-color: ${(props) => props.$color};
   mask-image: url(${(props) => props.$imageUrl});
   mask-size: 20px;
@@ -173,13 +184,17 @@ export const StyledButtton = styled.button<{
   padding: ${(props) => (props.$padding ? props.$padding : "5px")};
   margin: ${(props) => (props.$margin ? props.$margin : "10px")};
   border-radius: 10px;
-  border: solid 3px
+  border: solid 2px
     ${(props) => (props.$border ? props.$border : colors.primary)};
   background-color: ${(props) =>
     props.$color ? props.$color : colors.primary};
   font-size: 20px;
   color: ${colors.text};
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
 
   &:hover {
     box-shadow: 0 0 5px 1px #141c16;

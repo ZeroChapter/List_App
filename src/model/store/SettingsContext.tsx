@@ -20,6 +20,8 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({
     showNoteCreator ? setShowNoteCreator(false) : setShowNoteCreator(true);
   };
 
+  const [filter, setFilter] = useState<"all" | "done" | "not-done">("all");
+
   return (
     <SettingsContext.Provider
       value={{
@@ -28,6 +30,8 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({
         setVisibleEditing,
         switchVisible,
         switchNoteCreator,
+        filter,
+        setFilter,
       }}
     >
       {children}
