@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { colors } from "./colors";
+import { Icons } from "./iconPath";
 
-const imgUrl: string = "src/assets/checked.svg";
-const crossUrl: string = "src/assets/cross.svg";
-const penUrl: string = "src/assets/pen.svg";
+const imgUrl: string = "/checked.svg";
 
 export const Background = styled.div`
   background-color: ${colors.primary};
@@ -34,7 +33,7 @@ export const StyledCheckBox = styled.button<{ $active: boolean }>`
     width: 80%;
     height: 80%;
     background-color: ${colors.primary};
-    mask-image: url(${imgUrl});
+    mask-image: url(${Icons.check});
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;
@@ -48,34 +47,6 @@ export const BorderBox = styled.div<{ $color: string }>`
   border: solid 1px ${(props) => props.$color};
 `;
 
-export const CrossIcon = styled.div`
-  width: 20px;
-  height: 20px;
-  background-color: ${colors.cross};
-  mask-image: url(${crossUrl});
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-image: url(${crossUrl});
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-`;
-export const PenIcon = styled.div`
-  padding: 0;
-  margin: 0;
-  width: 20px;
-  height: 20px;
-  background-color: ${colors.green};
-  mask-image: url(${penUrl});
-  mask-size: 20px;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-image: url(${penUrl});
-
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-`;
 export const Icon = styled.div<{
   $color: string;
   $imageUrl: string;

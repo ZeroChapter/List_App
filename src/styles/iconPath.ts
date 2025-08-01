@@ -1,6 +1,8 @@
+const BASE_PATH = process.env.NODE_ENV === "production" ? "/List_App/" : "/";
+
 export const Icons = {
-  penIcon: "src/assets/pen.svg",
-  crossIcon: "src/assets/cross.svg",
-  plus: "src/assets/plus.svg",
-  check: "src/assets/checked.svg",
+  penIcon: `${BASE_PATH}pen.svg`,
+  crossIcon: `${BASE_PATH}cross.svg`,
+  plus: `${BASE_PATH}plus.svg`,
+  check: `${BASE_PATH}checked.svg`,
 };
