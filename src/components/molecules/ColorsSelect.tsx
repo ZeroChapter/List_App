@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ColorButton, ItemContainer } from "src/styles/styles";
+import { ColorButton, Container } from "src/styles/styles";
 import { colors } from "src/styles/colors";
 import { ColorPick } from "src/model/types";
 
@@ -19,6 +19,12 @@ export const ColorSelect: React.FC<ColorSelectProps> = ({ setColor }) => {
     { hex: colors.tag6 },
     { hex: colors.tag7 },
     { hex: colors.tag8 },
+    { hex: colors.tag9 },
+    { hex: colors.tag10 },
+    { hex: colors.tag11 },
+    { hex: colors.tag12 },
+    { hex: colors.tag13 },
+    { hex: colors.tag14 },
   ];
 
   const pickColor = (hex: string) => {
@@ -27,7 +33,7 @@ export const ColorSelect: React.FC<ColorSelectProps> = ({ setColor }) => {
   };
 
   return (
-    <ItemContainer>
+    <Container color={colors.primary} $padding="0px" $margin="0px">
       {colorButtons.map((el) => (
         <ColorButton
           onClick={() => {
@@ -38,6 +44,6 @@ export const ColorSelect: React.FC<ColorSelectProps> = ({ setColor }) => {
           key={el.hex}
         ></ColorButton>
       ))}
-    </ItemContainer>
+    </Container>
   );
 };

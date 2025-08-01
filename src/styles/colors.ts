@@ -14,5 +14,11 @@ export const colors = {
   tag6: "#DE7D3C",
   tag7: "#965735",
   tag8: "#c7b55a",
+  tag9: "#BA599F",
+  tag10: "#37B38A",
+  tag11: "#A8364E",
+  tag12: "#60A836",
+  tag13: "#DEBB97",
+  tag14: "#555666",
 };
 //
