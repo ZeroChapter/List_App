@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { ItemData } from "src/model/types";
-import { DropDown, Container } from "src/styles/styles";
+import { DropDown, Container, Flex } from "src/styles/styles";
 import { Item } from "./Item";
 import { LoadLine } from "../atoms/LoadLine";
 
@@ -26,9 +26,11 @@ export const ItemContainer: React.FC<containerProps> = ({ items }) => {
         </div>
 
         <DropDown color={tagColor} $activ={activ}>
-          {items.map((el) => (
-            <Item item={el} key={el.id} />
-          ))}
+          <Flex dir="column-reverse">
+            {items.map((el) => (
+              <Item item={el} key={el.id} />
+            ))}
+          </Flex>
         </DropDown>
       </Container>
     </>

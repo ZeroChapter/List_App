@@ -172,7 +172,7 @@ export const StyledButtton = styled.button<{
   }
 `;
 export const Flex = styled.div<{
-  dir: "row" | "column";
+  dir: "row" | "column" | "row-reverse" | "column-reverse";
   $whidth?: string;
   $gap?: string;
   $align?: "center" | "start" | "end";
@@ -182,7 +182,7 @@ export const Flex = styled.div<{
   padding: 0px;
   display: flex;
   flex-direction: ${(props) => props.dir};
-  whidth: ${(props) => props.$whidth};
+  width: ${(props) => props.$whidth};
   gap: ${(props) => props.$gap};
   align-items: ${(props) => (props.$align ? props.$align : "center")};
   justify-content: ${(props) => (props.$justify ? props.$justify : "center")};
@@ -195,11 +195,12 @@ export const HiddenDiv = styled.div<{ $active: boolean }>`
 export const PopUp = styled.div<{ $active: boolean }>`
   background: rgba(0, 0, 0, 0.65);
   display: ${(props) => (props.$active ? "flex" : "none")};
-  align-items: center;
+  align-items: start;
   justify-content: center;
   z-index: 100;
   width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
+  padding-top: 60px;
 `;

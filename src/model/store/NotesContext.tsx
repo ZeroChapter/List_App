@@ -34,10 +34,8 @@ export const NoteProvider: React.FC<{ children: React.ReactNode }> = ({
     setItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const newTag = (tag: string, id: number) => {
-    setItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, tag } : item))
-    );
+  const findItem = (id: number): ItemData | undefined => {
+    return items.find((el) => el.id === id);
   };
 
   const removeNote = (newItems: ItemData[]) => {
@@ -50,15 +48,24 @@ export const NoteProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
+  const editItem = (id: number, newText: string, newTag: string) => {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, text: newText, tag: newTag } : item
+      )
+    );
+  };
+
   return (
     <NoteContext.Provider
       value={{
         items,
         addItem,
         delItem,
-        newTag,
+        findItem,
         removeNote,
         itemHandler,
+        editItem,
       }}
     >
       {children}
