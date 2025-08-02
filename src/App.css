@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&text=АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap");
+
 * {
-  font-family: "Comic Sans MS", "Comic Neue";
+  font-family: "Comic Relief", "Comic Sans MS";
 }
 p {
   padding: 0;
