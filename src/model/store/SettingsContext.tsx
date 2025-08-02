@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import type { SettingsContextType } from "../types";
+import type { ItemData, SettingsContextType } from "../types";
 
 export const SettingsContext = createContext<SettingsContextType | undefined>(
   undefined
@@ -19,6 +19,7 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({
   const switchNoteCreator = () => {
     showNoteCreator ? setShowNoteCreator(false) : setShowNoteCreator(true);
   };
+  const [editNote, setEditNote] = useState<number | null>(null);
 
   const [filter, setFilter] = useState<"all" | "done" | "not-done">("all");
 
@@ -32,6 +33,8 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({
         switchNoteCreator,
         filter,
         setFilter,
+        editNote,
+        setEditNote,
       }}
     >
       {children}

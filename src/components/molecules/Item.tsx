@@ -22,7 +22,7 @@ export const Item: React.FC<ItemProps> = ({ item }) => {
 
   return (
     <>
-      <Flex dir="row" $whidth="350px" $gap="5px">
+      <Flex dir="row" $gap="5px" $whidth="370px">
         <ItemContainer $mark={checked}>
           <p>{item.text}</p>
           <div>

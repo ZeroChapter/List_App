@@ -6,7 +6,8 @@ import type { ItemData } from "../types";
 export const useNoteCreator = () => {
   const [tag, setTag] = useState<string | null>(null);
   const [text, setText] = useState<string | null>(null);
-  const { addItem } = useItem();
+  const { addItem, editItem } = useItem();
+  const [itemId, setItemId] = useState<number | null>(null);
 
   const addNewItem = () => {
     if (text && tag) {
@@ -18,6 +19,11 @@ export const useNoteCreator = () => {
       setText(null);
     }
   };
+  const editItemForId = () => {
+    if (itemId && text && tag) {
+      editItem(itemId, text, tag);
+    }
+  };
 
   return {
     tag,
@@ -25,6 +31,7 @@ export const useNoteCreator = () => {
     setTag,
     setText,
     addNewItem,
+    setItemId,
   };
 };
 

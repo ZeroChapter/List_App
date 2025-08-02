@@ -3,6 +3,7 @@ import { Flex, Icon, StyledButtton } from "src/styles/styles";
 import { Icons } from "src/styles/iconPath";
 import { colors } from "src/styles/colors";
 import { useDeleteItem } from "src/model/hooks/useNoteCreator";
+import { useSettings } from "src/model/store/useSettings";
 
 interface ControlPanelProps {
   id: number;
@@ -10,6 +11,8 @@ interface ControlPanelProps {
 
 export const ControlPanel: React.FC<ControlPanelProps> = ({ id }) => {
   const { deleteItem } = useDeleteItem();
+  const { setEditNote } = useSettings();
+  const { switchNoteCreator } = useSettings();
 
   return (
     <Flex dir="column" $gap="2px">
@@ -24,7 +27,12 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ id }) => {
           $scale={0.67}
         ></Icon>
       </StyledButtton>
-      <StyledButtton $margin="0px">
+      <StyledButtton
+        $margin="0px"
+        onClick={() => {
+          setEditNote(id), switchNoteCreator();
+        }}
+      >
         <Icon
           $color={colors.green}
           $imageUrl={Icons.penIcon}
