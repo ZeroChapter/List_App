@@ -111,10 +111,17 @@ export const LinePoint = styled.div<{ $done: boolean; $width: number }>`
   border: solid 1px ${colors.text};
 `;
 export const DropDown = styled.div<{ $activ: boolean; color: string }>`
-  margin: 0px;
-  display: ${(prop) => (prop.$activ ? "block" : "none")};
+  margin: 0;
   border-radius: 10px;
-  color: ${(prop) => prop.color};
+  color: ${(props) => props.color};
+  display: grid;
+  grid-template-rows: ${(props) => (props.$activ ? "1fr" : "0fr")};
+  transition: grid-template-rows 0.6s ease;
+
+  > * {
+    overflow: hidden;
+    min-height: 0;
+  }
 `;
 export const ColorButton = styled.button<{ $color: string; $activ: boolean }>`
   box-shadow: ${(props) => (props.$activ ? "0 0 5px 2px #141C16" : "none")};
@@ -188,13 +195,19 @@ export const Flex = styled.div<{
   justify-content: ${(props) => (props.$justify ? props.$justify : "center")};
 `;
 export const HiddenDiv = styled.div<{ $active: boolean }>`
-  display: ${(props) => (props.$active ? "block" : "none")};
-  whidth: ${(props) => (props.$active ? "100%" : "0")};
+  opacity: ${(props) => (props.$active ? 1 : 0)};
+  width: ${(props) => (props.$active ? "40px" : "0")};
+  transition: opacity 0.3s ease, width 0.3s ease;
+  overflow: hidden;
+  pointer-events: ${(props) => (props.$active ? "auto" : "none")};
 `;
 
 export const PopUp = styled.div<{ $active: boolean }>`
   background: rgba(0, 0, 0, 0.65);
-  display: ${(props) => (props.$active ? "flex" : "none")};
+  display: flex;
+  opacity: ${(props) => (props.$active ? 1 : 0)};
+  visibility: ${(props) => (props.$active ? "visible" : "hidden")};
+  transition: opacity 0.3s ease, visibility 0.3s ease;
   align-items: start;
   justify-content: center;
   z-index: 100;
@@ -203,4 +216,5 @@ export const PopUp = styled.div<{ $active: boolean }>`
   position: fixed;
   top: 0;
   padding-top: 60px;
+  pointer-events: ${(props) => (props.$active ? "auto" : "none")};
 `;
